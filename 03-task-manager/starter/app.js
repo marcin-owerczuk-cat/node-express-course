@@ -8,8 +8,8 @@ const notFound = require('./middleware/not-found');
 
 const port = process.env.PORT || 5000;
 
-app.use(express.json());
 app.use(express.static('./public'));
+app.use(express.json());
 
 
 app.use('/api/v1/tasks', tasks);
