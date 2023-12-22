@@ -1,7 +1,7 @@
 //import router
 const express = require('express');
 const {
-    getTasks,
+    getAllTasks,
     getTask,
     createTask,
     deleteTask,
@@ -12,7 +12,7 @@ const {
 const router = express.Router();
 
 router.route('/')
-    .get(getTasks)
+    .get(getAllTasks)
     .post(createTask);
 
 router.route('/:id')
