@@ -1,5 +1,3 @@
-
-//create express app with router
 const express = require('express');
 const app = express();
 const tasks = require('./routes/tasks');
@@ -19,10 +17,18 @@ app.use(express.static('./public'));
 app.use('/api/v1/tasks', tasks);
 app.use(notFound);
 
-connectDb(connectionString).then(() => {
-  console.log('Connected to database');
-  app.listen(port, async () => {
-      console.log(`Server is listening on port ${port}...`);
-    }
-  );
-}).catch((err) => {console.log(err);});
+const start = async () => {
+
+  try {
+    await connectDb(connectionString);
+    console.log('Connected to database');
+    app.listen(port, async () => {
+        console.log(`Server is listening on port ${port}...`);
+      }
+    );
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+start();
