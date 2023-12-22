@@ -1,11 +1,13 @@
 const Tasks = [{
-    id: 1,
-    name: 'Task 1',
-    done: false,
+  id: 1,
+  name: 'Task 1',
+  completed: false,
+  description: 'Task 1 description',
 }, {
-    id: 2,
-    name: 'Task 2',
-    done: true,
+  id: 2,
+  name: 'Task 2',
+  completed: true,
+  description: 'Task 2 description',
 }];
 
 const getTasks = (req, res) => {
