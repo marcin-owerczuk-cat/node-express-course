@@ -6,8 +6,6 @@ require('dotenv').config();
 const notFound = require('./middleware/not-found');
 //const errorHandlerMiddleware = require('./middleware/error-handler');
 
-const connectionString = process.env.DB_URL;
-
 const port = process.env.PORT || 5000;
 
 app.use(express.json());
@@ -18,12 +16,13 @@ app.use('/api/v1/tasks', tasks);
 app.use(notFound);
 
 const start = async () => {
-
   try {
-    await connectDb(connectionString);
+    await connectDb(process.env.DB_URL);
     console.log('Connected to database');
     app.listen(port, async () => {
         console.log(`Server is listening on port ${port}...`);
+        const Tasks = require('./models/Task');
+        Tasks.create({name: 'Task 1111', completed: true});
       }
     );
   } catch (error) {
