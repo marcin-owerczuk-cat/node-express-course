@@ -12,7 +12,7 @@ const {
 const router = express.Router();
 
 router.route('/')
-    .get( getTasks)
+    .get(getTasks)
     .post(createTask);
 
 router.route('/:id')
