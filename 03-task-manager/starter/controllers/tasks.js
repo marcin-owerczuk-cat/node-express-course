@@ -1,24 +1,13 @@
-const Tasks = [{
-  id: 1,
-  name: 'Task 1',
-  completed: false,
-  description: 'Task 1 description',
-}, {
-  id: 2,
-  name: 'Task 2',
-  completed: true,
-  description: 'Task 2 description',
-}];
-
-const getTasks = (req, res) => {
-    try {
-        const tasks = Tasks;
-        res.status(200).json(tasks);
-    } catch (error) {
-        res.status(500).json({
-            error: error.message
-        });
-    }
+const Tasks = require('../models/Task');
+const getTasks = async (req, res) => {
+  try {
+    const tasks = await Tasks.find();
+    res.status(200).json({tasks});
+  } catch (error) {
+    res.status(500).json({
+      error: error.message
+    });
+  }
 }
 
 //getTask,
@@ -33,23 +22,17 @@ const getTask = (req, res) => {
         });
     }
 }
+
 //createTask,
-const createTask = (req, res) => {
-    try {
-        const {name} = req.body;
-        const newTask = {
-            id: Tasks.length + 1,
-            name,
-            done: false,
-        }
-        Tasks.push(newTask);
-        console.log(newTask);
-        res.status(201).json(newTask);
-    } catch (error) {
-        res.status(500).json({
-            error: error.message
-        });
-    }
+const createTask = async (req, res) => {
+  try {
+    const task = await Tasks.create(req.body);
+    res.status(201).json({task});
+  } catch (error) {
+    res.status(500).json({
+      error: error.message
+    });
+  }
 }
 //updateTask,
 const updateTask = (req, res) => {

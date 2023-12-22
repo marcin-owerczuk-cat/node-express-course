@@ -21,8 +21,6 @@ const start = async () => {
     console.log('Connected to database');
     app.listen(port, async () => {
         console.log(`Server is listening on port ${port}...`);
-        const Tasks = require('./models/Task');
-        Tasks.create({name: 'Task 1111', completed: true});
       }
     );
   } catch (error) {
