@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-
 const connectDb = (url) =>
   mongoose.connect(url, {
     useNewUrlParser: true,
@@ -8,6 +7,5 @@ const connectDb = (url) =>
     useCreateIndex: true,
     useFindAndModify: false,
   });
-
 
 module.exports = connectDb;
