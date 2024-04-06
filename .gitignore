@@ -130,3 +130,5 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
+/.idea/inspectionProfiles/Project_Default.xml
+/.idea/dictionaries/marcin_owerczuk.xml
